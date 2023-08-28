@@ -8,6 +8,7 @@ const state = {
 	baseCurrency: 'USD',
 	targetCurrency: 'EUR',
 	exchangeRate: null,
+	amount: 1,
 	error: null, // To store any error messages
 }
 
@@ -33,6 +34,9 @@ const mutations = {
 	SET_ERROR(state, payload) {
 		// Mutation for error
 		state.error = payload
+	},
+	SET_AMOUNT(state, amount) {
+		state.amount = amount
 	},
 }
 

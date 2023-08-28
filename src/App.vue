@@ -1,11 +1,22 @@
 <template>
-	<div id="app"></div>
+	<div id="app">
+		<!-- Currency Selector Component -->
+		<CurrencySelector />
+		<!-- Currency Display Component -->
+		<CurrencyDisplay />
+	</div>
 </template>
 
 <script>
+	import CurrencySelector from './components/CurrencySelector.vue'
+	import CurrencyDisplay from './components/CurrencyDisplay.vue'
+
 	export default {
 		name: 'App',
-		components: {},
+		components: {
+			CurrencySelector,
+			CurrencyDisplay,
+		},
 	}
 </script>
 
