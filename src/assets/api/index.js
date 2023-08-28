@@ -6,6 +6,7 @@ import axios from 'axios'
 const API_KEY = process.env.API_KEY
 const BASE_URL = `https://api.exchangerate-api.com/v4/latest/`
 
+// Fetch exchange rates for the given base currency
 export const fetchExchangeRates = async baseCurrency => {
 	try {
 		const response = await axios.get(
@@ -13,7 +14,6 @@ export const fetchExchangeRates = async baseCurrency => {
 		)
 		return response.data.rates
 	} catch (error) {
-		// Error handling: You could dispatch a Vuex action here to handle the error globally.
 		console.error('Failed to fetch exchange rates', error)
 		throw new Error('Failed to fetch exchange rates')
 	}
