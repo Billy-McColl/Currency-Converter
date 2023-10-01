@@ -9,20 +9,30 @@
 
 		<!-- Base Currency Dropdown -->
 		<select v-model="selectedBaseCurrency">
-			<option v-for="currency in currencies" :key="currency">
-				{{ currency }}
+			<option
+				v-for="currency in currencies"
+				:key="currency.code"
+				:value="currency.code"
+			>
+				{{ currency.code }}
 			</option>
 		</select>
 
 		<!-- Target Currency Dropdown -->
 		<select v-model="selectedTargetCurrency">
-			<option v-for="currency in currencies" :key="currency">
-				{{ currency }}
+			<option
+				v-for="currency in currencies"
+				:key="currency.code"
+				:value="currency.code"
+			>
+				{{ currency.code }}
 			</option>
 		</select>
 
-		<!-- Enter Button -->
-		<button @click="convertCurrency">Enter</button>
+		<div>
+			<!-- Enter Button -->
+			<button @click="convertCurrency">Enter</button>
+		</div>
 	</div>
 </template>
 
@@ -32,147 +42,121 @@
 	export default {
 		data() {
 			return {
-				amountToConvert: 1, // Initialize with 1
+				amountToConvert: 1,
 				currencies: [
-					'USD',
-					'EUR',
-					'GBP',
-					'CAD',
-					'JPY',
-					'AUD',
-					'CHF',
-					'CNY',
-					'SEK',
-					'NZD',
-					'KRW',
-					'SGD',
-					'HKD',
-					'NOK',
-					'TRY',
-					'INR',
-					'RUB',
-					'BRL',
-					'ZAR',
-					'AED',
-					'ARS',
-					'COP',
-					'CLP',
-					'IDR',
-					'MYR',
-					'PHP',
-					'THB',
-					'VND',
-					'EGP',
-					'ILS',
-					'KWD',
-					'QAR',
-					'SAR',
-					'CZK',
-					'DKK',
-					'HUF',
-					'PLN',
-					'RON',
-					'ISK',
-					'HRK',
-					'BGN',
-					'SGD',
-					'HKD',
-					'THB',
-					'MXN',
-					'ZAR',
-					'PHP',
-					'MYR',
-					'NZD',
-					'SEK',
-					'IDR',
-					'BRL',
-					'SAR',
-					'RUB',
-					'TRY',
-					'KES',
-					'KRW',
-					'NOK',
-					'EGP',
-					'CZK',
-					'PKR',
-					'XDR',
-					'DZD',
-					'AED',
-					'CLF',
-					'BHD',
-					'COP',
-					'BND',
-					'AOA',
-					'UYU',
-					'QAR',
-					'CRC',
-					'DOP',
-					'PEN',
-					'OMR',
-					'MAD',
-					'LYD',
-					'NPR',
-					'SYP',
-					'JOD',
-					'BAM',
-					'GYD',
-					'YER',
-					'MUR',
-					'BWP',
-					'TOP',
-					'BBD',
-					'ETB',
-					'PGK',
-					'SDG',
-					'TTD',
-					'TZS',
-					'ALL',
-					'GHS',
-					'UZS',
-					'AFN',
-					'MKD',
-					'XCD',
-					'NAD',
-					'BOB',
-					'ZWD',
-					'VUV',
-					'SLL',
-					'KRW',
-					'LRD',
-					'LSL',
-					'MDL',
-					'KZT',
-					'BGN',
-					'MWK',
-					'AMD',
-					'BIF',
-					'DJF',
-					'KHR',
-					'CVE',
-					'GNF',
-					'PYG',
-					'HTG',
-					'SRD',
-					'MNT',
-					'KMF',
-					'JPY',
-					'AWG',
-					'NIO',
-					'LRD',
-					'MKD',
-					'SRD',
-					'SZL',
-					'TJS',
-					'BTN',
-					'WST',
-					'ANG',
-					'TMT',
-					'GGP',
-					'IMP',
-					'JEP',
-					'SVC',
-					'TVD',
-					'ZWL',
+					{ code: 'USD', value: 1 },
+					{ code: 'EUR', value: 1 },
+					{ code: 'GBP', value: 1 },
+					{ code: 'CAD', value: 1 },
+					{ code: 'JPY', value: 1 },
+					{ code: 'AUD', value: 1 },
+					{ code: 'CHF', value: 1 },
+					{ code: 'CNY', value: 1 },
+					{ code: 'SEK', value: 1 },
+					{ code: 'NZD', value: 1 },
+					{ code: 'KRW', value: 1 },
+					{ code: 'SGD', value: 1 },
+					{ code: 'HKD', value: 1 },
+					{ code: 'NOK', value: 1 },
+					{ code: 'TRY', value: 1 },
+					{ code: 'INR', value: 1 },
+					{ code: 'RUB', value: 1 },
+					{ code: 'BRL', value: 1 },
+					{ code: 'ZAR', value: 1 },
+					{ code: 'AED', value: 1 },
+					{ code: 'ARS', value: 1 },
+					{ code: 'COP', value: 1 },
+					{ code: 'CLP', value: 1 },
+					{ code: 'IDR', value: 1 },
+					{ code: 'MYR', value: 1 },
+					{ code: 'PHP', value: 1 },
+					{ code: 'THB', value: 1 },
+					{ code: 'VND', value: 1 },
+					{ code: 'EGP', value: 1 },
+					{ code: 'ILS', value: 1 },
+					{ code: 'KWD', value: 1 },
+					{ code: 'QAR', value: 1 },
+					{ code: 'SAR', value: 1 },
+					{ code: 'CZK', value: 1 },
+					{ code: 'DKK', value: 1 },
+					{ code: 'HUF', value: 1 },
+					{ code: 'PLN', value: 1 },
+					{ code: 'RON', value: 1 },
+					{ code: 'ISK', value: 1 },
+					{ code: 'HRK', value: 1 },
+					{ code: 'BGN', value: 1 },
+					{ code: 'MXN', value: 1 },
+					{ code: 'KES', value: 1 },
+					{ code: 'PKR', value: 1 },
+					{ code: 'XDR', value: 1 },
+					{ code: 'DZD', value: 1 },
+					{ code: 'CLF', value: 1 },
+					{ code: 'BHD', value: 1 },
+					{ code: 'BND', value: 1 },
+					{ code: 'AOA', value: 1 },
+					{ code: 'UYU', value: 1 },
+					{ code: 'CRC', value: 1 },
+					{ code: 'DOP', value: 1 },
+					{ code: 'PEN', value: 1 },
+					{ code: 'OMR', value: 1 },
+					{ code: 'MAD', value: 1 },
+					{ code: 'LYD', value: 1 },
+					{ code: 'NPR', value: 1 },
+					{ code: 'SYP', value: 1 },
+					{ code: 'JOD', value: 1 },
+					{ code: 'BAM', value: 1 },
+					{ code: 'GYD', value: 1 },
+					{ code: 'YER', value: 1 },
+					{ code: 'MUR', value: 1 },
+					{ code: 'BWP', value: 1 },
+					{ code: 'TOP', value: 1 },
+					{ code: 'BBD', value: 1 },
+					{ code: 'ETB', value: 1 },
+					{ code: 'PGK', value: 1 },
+					{ code: 'SDG', value: 1 },
+					{ code: 'TTD', value: 1 },
+					{ code: 'TZS', value: 1 },
+					{ code: 'ALL', value: 1 },
+					{ code: 'GHS', value: 1 },
+					{ code: 'UZS', value: 1 },
+					{ code: 'AFN', value: 1 },
+					{ code: 'MKD', value: 1 },
+					{ code: 'XCD', value: 1 },
+					{ code: 'NAD', value: 1 },
+					{ code: 'BOB', value: 1 },
+					{ code: 'ZWD', value: 1 },
+					{ code: 'VUV', value: 1 },
+					{ code: 'SLL', value: 1 },
+					{ code: 'LRD', value: 1 },
+					{ code: 'LSL', value: 1 },
+					{ code: 'MDL', value: 1 },
+					{ code: 'KZT', value: 1 },
+					{ code: 'MWK', value: 1 },
+					{ code: 'AMD', value: 1 },
+					{ code: 'BIF', value: 1 },
+					{ code: 'DJF', value: 1 },
+					{ code: 'KHR', value: 1 },
+					{ code: 'CVE', value: 1 },
+					{ code: 'GNF', value: 1 },
+					{ code: 'PYG', value: 1 },
+					{ code: 'HTG', value: 1 },
+					{ code: 'SRD', value: 1 },
+					{ code: 'MNT', value: 1 },
+					{ code: 'KMF', value: 1 },
+					{ code: 'AWG', value: 1 },
+					{ code: 'NIO', value: 1 },
+					{ code: 'SZL', value: 1 },
+					{ code: 'TJS', value: 1 },
+					{ code: 'BTN', value: 1 },
+					{ code: 'WST', value: 1 },
+					{ code: 'ANG', value: 1 },
+					{ code: 'TMT', value: 1 },
+					{ code: 'GGP', value: 1 },
+					{ code: 'IMP', value: 1 },
+					{ code: 'JEP', value: 1 },
+					{ code: 'SVC', value: 1 },
+					{ code: 'TVD', value: 1 },
+					{ code: 'ZWL', value: 1 },
 				],
 			}
 		},
@@ -205,25 +189,48 @@
 				setAmount: 'currency/SET_AMOUNT',
 			}),
 			convertCurrency() {
-				// Dispatch action to fetch latest exchange rates
 				this.$store.dispatch('currency/fetchExchangeRate')
 			},
 		},
-
+		mounted() {
+			this.convertCurrency()
+		},
 		watch: {
 			amountToConvert(newVal) {
 				this.setAmount(newVal)
-			},
-			baseCurrency(newVal) {
-				this.setBaseCurrency(newVal)
-			},
-			targetCurrency(newVal) {
-				this.setTargetCurrency(newVal)
 			},
 		},
 	}
 </script>
 
 <style scoped>
-	/* Add your CSS styling here */
+	.currency-selector,
+	.currency-display {
+		border: 1px solid #e0e0e0;
+		padding: 20px;
+		margin: 10px 0;
+		border-radius: 8px;
+		background-color: #f9f9f9;
+	}
+
+	.currency-selector input,
+	.currency-selector select,
+	.currency-selector button,
+	.currency-display h1 {
+		font-size: 1em;
+		margin: 5px 0;
+	}
+
+	.currency-selector button {
+		padding: 10px 20px;
+		border: none;
+		border-radius: 4px;
+		background-color: #008cba;
+		color: white;
+		cursor: pointer;
+	}
+
+	.currency-selector button:hover {
+		background-color: #005f5f;
+	}
 </style>

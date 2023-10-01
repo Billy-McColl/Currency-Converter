@@ -14,6 +14,12 @@
 			}),
 			convertedAmount() {
 				const baseAmount = 1 // Replace with the actual amount you want to convert
+				if (
+					this.exchangeRate === undefined ||
+					this.exchangeRate === 0
+				) {
+					return 0 // Default value if exchangeRate is undefined or 0
+				}
 				return baseAmount * this.exchangeRate
 			},
 		},
