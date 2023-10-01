@@ -212,7 +212,6 @@
 		border-radius: 8px;
 		background-color: #f9f9f9;
 	}
-
 	.currency-selector input,
 	.currency-selector select,
 	.currency-selector button,
