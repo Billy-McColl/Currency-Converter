@@ -45,3 +45,4 @@ Contributions are welcome. Feel free to open a pull request or branch from this 
 
 License
 Open-source software licensed under the MIT license.
+# exchange-rate-vuejs
